@@ -1,13 +1,13 @@
 package org.example;
 
 public class Card {
-    String suit;
+    Suits suit;
     String symbol;
     int value;
 
     String[] digits = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
 
-    public Card(String suit, int value) {
+    public Card(int value, Suits suit) {
         this.suit = suit;
         this.value = value;
 
@@ -15,7 +15,7 @@ public class Card {
     }
 
     public void info() {
-        System.out.printf("I am %d of %s with the symb %s ", this.value, this.suit, this.symbol);
+        System.out.println(this.symbol + " of " + this.suit.utf() + " " + this.suit);
     }
 
 }
