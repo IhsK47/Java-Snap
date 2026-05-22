@@ -1,6 +1,8 @@
 ### To-Do
 
 1. fix enum symbol //tho no need to
+2. how to do scanners
+3. timers
 
 ## Stage 2
 
@@ -18,17 +20,21 @@ This class should use the methods defined
 above, as well as some new ones, to enable the user to play the game snap according to the
 following rules:
 
-- By pressing enter in the command line, the user takes their turn.
-- Each turn, a new card is dealt from the deck.
-- The game continues until two cards in a row have the same symbol/number, at which point the “player” wins and the game
+- Scanner = Pressing enter in the command line, user takes their turn.
+- Each turn, dealCard.
+- The game continues until two cards in a row have the same symbol/number,
+- at which point the “player” wins and the game
   ends.
 
 ### Stage 4
 
-Create a Player class and enable the snap game to be two player, with the users taking it in turns to go. If the snap
-occurs on the users turn, they win.
+Create Player class and enable snap game to be two-player
 
-Add a timer so that when there is a snap opportunity, the player has 2 seconds to submit the word “snap” in order to
-win. If they don’t type it in time, they lose.
+- users taking turns
+- If snap occurs on users turn, they win or game continues
+
+Add a timer so when there is a snap opportunity, player has 2sec to submit the word “snap” in order to
+win.
+If they don’t type it in time, they lose.
 
 ---

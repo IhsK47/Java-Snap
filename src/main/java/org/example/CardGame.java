@@ -6,9 +6,9 @@ import java.util.Collections;
 import static java.util.Objects.compare;
 
 public class CardGame {
-    int[] values = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
-    ArrayList<Card> deckOfCards = new ArrayList<>();
-    int head = -1;
+    final int[] values = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
+    static ArrayList<Card> deckOfCards = new ArrayList<>();
+    static int head = -1;
 
     public CardGame() {
 
@@ -22,36 +22,35 @@ public class CardGame {
 
     }
 
-    public Card dealCard() {
+    public static Card dealCard() {
         ++head;
 
         if (head == deckOfCards.size()) {
-            this.shuffleDeck();
+            CardGame.shuffleDeck();
             head = 0;
         } //reset deck
 
-        System.out.println(deckOfCards.get(head));
+        System.out.print("Dealt: ");
+        deckOfCards.get(head).info();
 
         return deckOfCards.get(head);
-
-
     }
 
-    public void SortDeckInNumberOrder() {
+    public static void SortDeckInNumberOrder() {
         deckOfCards.sort(new SortByValue());
     } //exp:aaaa-2222-3333 etc
 
-    public void sortDeckIntoSuits() {
+    public static void sortDeckIntoSuits() {
         deckOfCards.sort(new SortBySuit());
-    } //exp: sss-hhh-ccc-ddd
+    } //exp: allSpades, then allHearts etc
 
-    public void shuffleDeck() {
+    public static void shuffleDeck() {
         System.out.println("Shuffling...");
-        this.head = -1;
-        //worked
+        Collections.shuffle(deckOfCards);
+        CardGame.head = -1;
     }
 
-    public void displayDeck() {
+    public static void displayDeck() {
         for (Card card : deckOfCards) {
             card.info();
         }
