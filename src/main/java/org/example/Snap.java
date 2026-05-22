@@ -1,6 +1,10 @@
 package org.example;
 
 public class Snap extends CardGame {
+
+    public static void run() {
+        System.out.println("i am  snap");
+    }
 }
 
 

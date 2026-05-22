@@ -13,6 +13,8 @@ public class Main {
         CardGame game1 = new CardGame();
 
         game1.shuffleDeck();
-        game1.SortDeckInNumberOrder();
+        game1.displayDeck();
+
+        Snap.run();
     }
 }

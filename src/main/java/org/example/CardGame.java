@@ -8,7 +8,7 @@ import static java.util.Objects.compare;
 public class CardGame {
     int[] values = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
     ArrayList<Card> deckOfCards = new ArrayList<>();
-    int head = 0;
+    int head = -1;
 
     public CardGame() {
 
@@ -25,30 +25,30 @@ public class CardGame {
     public Card dealCard() {
         ++head;
 
+        if (head == deckOfCards.size()) {
+            this.shuffleDeck();
+            head = 0;
+        } //reset deck
+
         System.out.println(deckOfCards.get(head));
 
         return deckOfCards.get(head);
 
+
     }
 
     public void SortDeckInNumberOrder() {
-        //exp: aaaa-2222-3333
-
-        deckOfCards.sort(new SortByValue()); //probs not working LOGICALLY
-
-        for (Card card : deckOfCards) {
-            card.info();
-        }
-    } //close number order
+        deckOfCards.sort(new SortByValue());
+    } //exp:aaaa-2222-3333 etc
 
     public void sortDeckIntoSuits() {
-        //exp: A234567-K Spades then a-K hearts etc
-
-    }
+        deckOfCards.sort(new SortBySuit());
+    } //exp: sss-hhh-ccc-ddd
 
     public void shuffleDeck() {
         System.out.println("Shuffling...");
-        Collections.shuffle(deckOfCards); //worked
+        this.head = -1;
+        //worked
     }
 
     public void displayDeck() {

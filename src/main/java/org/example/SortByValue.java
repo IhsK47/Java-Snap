@@ -7,7 +7,6 @@ import java.util.Comparator;
 public class SortByValue implements Comparator<Card> {
     @Override
     public int compare(Card o1, Card o2) {
-        System.out.println(Math.min(o1.value, o2.value));
         return Integer.compare(o1.value, o2.value);
     }
 
