@@ -12,25 +12,20 @@ public class CardGame {
 
     public CardGame() {
 
-        //Suits Suits;
         for (Suits s : Suits.values()) {
             for (int val : values) {
                 deckOfCards.add(new Card(val, s));
             } //close v
         } // close s
-        System.out.println(deckOfCards);
-
     }
 
     public static Card dealCard() {
         ++head;
-
         if (head == deckOfCards.size()) {
             CardGame.shuffleDeck();
             head = 0;
         } //reset deck
 
-        System.out.print("Dealt: ");
         deckOfCards.get(head).info();
 
         return deckOfCards.get(head);
