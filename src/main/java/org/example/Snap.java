@@ -27,6 +27,29 @@ public class Snap extends CardGame {
 
     } //close run()
 
+    public void setUp() {
+        CardGame.shuffleDeck();
+        currentCard = CardGame.dealCard();
+    }
+
+    public Boolean validEnter() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Press ENTER:");
+        String userInput = scanner.nextLine().toLowerCase();
+
+        if (userInput.isBlank() || userInput.equals("enter") || userInput.equals("coyg")) {
+            return true;
+        } else {
+            System.out.println("ONLY the enter key...");
+            return false;
+        }
+    }
+
+    public void turn() {
+        previousCard = currentCard;
+        currentCard = CardGame.dealCard();
+    }
+
     public void twoPlayer() {
         setUp();
         System.out.println("<Snap Game> \nHOW TO PLAY: \n- Each Player takes a turn\n- When its a match, type 'Snap' to win\n- First to snap wins, good luck!\nPress Enter For New Card...\n");
@@ -38,27 +61,7 @@ public class Snap extends CardGame {
 
     }
 
-    public void setUp() {
-        CardGame.shuffleDeck();
-        currentCard = CardGame.dealCard();
-    }
-
-    public Boolean validEnter() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Press ENTER:");
-        String userInput = scanner.nextLine();
-
-        if (userInput.isBlank()) {
-            return true;
-        } else {
-            System.out.println("ONLY the enter key...");
-            return false;
-        }
-    }
-
-    public void turn() {
-        previousCard = currentCard;
-        currentCard = CardGame.dealCard();
+    public void playerTurn() {
     }
 }
 
@@ -75,8 +78,11 @@ while snap = false
 player 1. turn
 player 2. turn
 
+while run:
+p1 turn check()
+if run still p2 turn check()
 
-turn()
+PayerTurn()
 if previous card = current anddd snap within two seconds:
 snap = true
 current player wins
