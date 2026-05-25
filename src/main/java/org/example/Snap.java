@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class Snap extends CardGame {
     Boolean win = false;
+    Boolean win2 = false;
     Player p1 = new Player("ash1");
     Player p2 = new Player("remi2");
     Card previousCard;

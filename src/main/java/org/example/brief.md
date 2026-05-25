@@ -12,20 +12,6 @@
 
 ---
 
-### Stage 3
-
-Create class for Snap that extends CardGame.
-
-This class should use the methods defined
-above, as well as some new ones, to enable the user to play the game snap according to the
-following rules:
-
-- Scanner = Pressing enter in the command line, user takes their turn.
-- Each turn, dealCard.
-- The game continues until two cards in a row have the same symbol/number,
-- at which point the “player” wins and the game
-  ends.
-
 ### Stage 4
 
 Create Player class and enable snap game to be two-player
