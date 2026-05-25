@@ -35,7 +35,9 @@ public class Snap extends CardGame {
 
     } //close run()
 
-    
+    public void twoPlayer() {
+        //
+    }
 
     public void turn() {
         previousCard = currentCard;
