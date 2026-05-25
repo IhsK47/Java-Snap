@@ -16,19 +16,8 @@ public class Snap extends CardGame {
         System.out.println("Snap Game - Press Enter For New Card...\n");
 
 
-        Scanner scanner = new Scanner(System.in);
-
         while (win == false) {
-            System.out.print("Press ENTER:");
-            String userInput = scanner.nextLine();
-
-            if (userInput.isBlank()) {
-                return true;
-            } else {
-                System.out.println("ONLY the enter key...");
-            }
-
-            if validEnter() turn();
+            if (this.validEnter()) turn();
 
             if (previousCard.symbol == currentCard.symbol) {
                 win = true;
@@ -41,13 +30,30 @@ public class Snap extends CardGame {
     public void twoPlayer() {
         setUp();
         System.out.println("<Snap Game> \nHOW TO PLAY: \n- Each Player takes a turn\n- When its a match, type 'Snap' to win\n- First to snap wins, good luck!\nPress Enter For New Card...\n");
-
+        while (!win2) {
+            validEnter();
+            System.out.println("loop ran once");
+            win2 = true;
+        }
 
     }
 
     public void setUp() {
         CardGame.shuffleDeck();
         currentCard = CardGame.dealCard();
+    }
+
+    public Boolean validEnter() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Press ENTER:");
+        String userInput = scanner.nextLine();
+
+        if (userInput.isBlank()) {
+            return true;
+        } else {
+            System.out.println("ONLY the enter key...");
+            return false;
+        }
     }
 
     public void turn() {

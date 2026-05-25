@@ -9,6 +9,7 @@ public class Main {
 
         Snap snap = new Snap();
 
+        snap.run();
         snap.twoPlayer();
     }
 }
