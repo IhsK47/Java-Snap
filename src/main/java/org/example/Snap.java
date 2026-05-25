@@ -4,8 +4,8 @@ import java.io.Reader;
 import java.util.Scanner;
 
 public class Snap extends CardGame {
-    Boolean win = false;
-    Boolean win2 = false;
+    Boolean snap = false;
+    Boolean snap2 = false;
     Player p1 = new Player("ash1");
     Player p2 = new Player("remi2");
     Card previousCard;
@@ -16,11 +16,11 @@ public class Snap extends CardGame {
         System.out.println("Snap Game - Press Enter For New Card...\n");
 
 
-        while (win == false) {
+        while (!snap) {
             if (this.validEnter()) turn();
 
             if (previousCard.symbol == currentCard.symbol) {
-                win = true;
+                snap = true;
                 System.out.println("ARSENAL ARSENAL ARSENAL");
             }
         }
@@ -34,9 +34,8 @@ public class Snap extends CardGame {
 
     public Boolean validEnter() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Press ENTER:");
+        System.out.print("press ENTER:");
         String userInput = scanner.nextLine().toLowerCase();
-
         if (userInput.isBlank() || userInput.equals("enter") || userInput.equals("coyg")) {
             return true;
         } else {
@@ -53,10 +52,10 @@ public class Snap extends CardGame {
     public void twoPlayer() {
         setUp();
         System.out.println("<Snap Game> \nHOW TO PLAY: \n- Each Player takes a turn\n- When its a match, type 'Snap' to win\n- First to snap wins, good luck!\nPress Enter For New Card...\n");
-        while (!win2) {
+        while (!snap2) {
             validEnter();
             System.out.println("loop ran once");
-            win2 = true;
+            snap2 = true;
         }
 
     }
@@ -68,13 +67,9 @@ public class Snap extends CardGame {
 
 /*
 
-- enter in the command line, the user takes their turn.
-- Each turn, a new card is dealt from the deck.
-- The game continues until two cards in a row have the same symbol/number, at which point the “player” wins and the game
-ends.
 
 
-while snap = false
+while !snap
 player 1. turn
 player 2. turn
 
@@ -82,10 +77,29 @@ while run:
 p1 turn check()
 if run still p2 turn check()
 
-PayerTurn()
-if previous card = current anddd snap within two seconds:
-snap = true
-current player wins
+playerTurn()
+turn i.e. store previous and deal current
+allow input
+sleep
+if previous card = current:
+    check for snap or any input really tbhhhh
+        return snap = true
+        current player wins
+else (potentially speaking)
+    player x did not snap, player y, will you?
+
+
+
+
+
+twoPlayer{
+ while not snap:
+    snap = playerturn (1)
+    if not snap:
+    playerturn (2)
+}
+
+
 
 
  */
