@@ -11,7 +11,6 @@ public class CardGame {
     static int head = -1;
 
     public CardGame() {
-
         for (Suits s : Suits.values()) {
             for (int val : values) {
                 deckOfCards.add(new Card(val, s));
@@ -33,7 +32,7 @@ public class CardGame {
 
     public static void SortDeckInNumberOrder() {
         deckOfCards.sort(new SortByValue());
-        
+
         // or
         //Collections.sort( deckOfCards, (a, b) -> a.value - b.value);
 
