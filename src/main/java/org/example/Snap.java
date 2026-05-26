@@ -34,8 +34,7 @@ public class Snap extends CardGame {
     public Boolean validEnter() {
 
         System.out.print("press ENTER:");
-        //String userInput = scanner.nextLine().toLowerCase();
-        String userInput = scanner.nextLine().replace("\r", "").trim().toLowerCase();
+        String userInput = scanner.nextLine().toLowerCase();
 
 
         if (userInput.isBlank() || userInput.equals("enter") || userInput.equals("coyg")) {
@@ -62,41 +61,47 @@ public class Snap extends CardGame {
 
     public Boolean playerTurn(Player p) {
 
-        System.out.printf("%s,", p.name);
+        System.out.printf("\n%s,", p.name);
         if (validEnter()) { //prompt until valid input
             deal();
 
             if (previousCard.symbol == currentCard.symbol) {
                 System.out.println("You gonna SNAP that bro?");
-                try {
-                    Thread.sleep(3000);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-                String userInput = scanner.nextLine().toLowerCase();
+                float timeLeft = 2;
+                sleep(100);
 
-                if (userInput.contains("snap")) {
-                    System.out.println(p.name + " takes the trophy!");
-                    return true;
-                } else {
-                    System.out.println("You failed to snap, game continues");
-                }
-            }
-        }
+                while (timeLeft >= 0) {
+                    String userInput = scanner.nextLine().toLowerCase();
+
+                    if (userInput.contains("snap")) {
+                        System.out.println(p.name + " takes the trophy!");
+                        return true;
+                    } else if (timeLeft <= 0 || userInput.isEmpty()) {
+                        System.out.println("You failed to snap, game continues");
+                    }
+
+                    System.out.println(timeLeft + "s left!");
+                    sleep(500);
+                    timeLeft -= 0.5;
+
+
+                } //while
+
+
+            } //if match
+        } //if valid enter
 
         return false;
 
-        /*
-        if p x no snap?
-else (potentially speaking)
-        player x did not snap, player y, will you?
-        */
-
     }
 
-    public Boolean snapCheck() {
-        //currently unused, but if snap is allowed to be passed on, can be used
-        return true;
+
+    public void sleep(int ms) {
+        try {
+            Thread.sleep(ms);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
