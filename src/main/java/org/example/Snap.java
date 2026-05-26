@@ -1,6 +1,5 @@
 package org.example;
 
-import java.io.Reader;
 import java.util.Scanner;
 
 public class Snap extends CardGame {
@@ -10,14 +9,14 @@ public class Snap extends CardGame {
     Player p2 = new Player("remi2");
     Card previousCard;
     Card currentCard;
+    Scanner scanner = new Scanner(System.in);
 
-    public void run() {
-        this.setUp();
+    public void onePlayer() {
         System.out.println("Snap Game - Press Enter For New Card...\n");
-
+        this.setUp();
 
         while (!snap) {
-            if (this.validEnter()) turn();
+            if (this.validEnter()) deal();
 
             if (previousCard.symbol == currentCard.symbol) {
                 snap = true;
@@ -25,7 +24,7 @@ public class Snap extends CardGame {
             }
         }
 
-    } //close run()
+    } //close onePlayer()
 
     public void setUp() {
         CardGame.shuffleDeck();
@@ -33,7 +32,7 @@ public class Snap extends CardGame {
     }
 
     public Boolean validEnter() {
-        Scanner scanner = new Scanner(System.in);
+
         System.out.print("press ENTER:");
         String userInput = scanner.nextLine().toLowerCase();
         if (userInput.isBlank() || userInput.equals("enter") || userInput.equals("coyg")) {
@@ -44,24 +43,48 @@ public class Snap extends CardGame {
         }
     }
 
-    public void turn() {
+    public void deal() {
         previousCard = currentCard;
         currentCard = CardGame.dealCard();
     }
 
     public void twoPlayer() {
-        setUp();
         System.out.println("<Snap Game> \nHOW TO PLAY: \n- Each Player takes a turn\n- When its a match, type 'Snap' to win\n- First to snap wins, good luck!\nPress Enter For New Card...\n");
+        setUp();
         while (!snap2) {
-            validEnter();
-            System.out.println("loop ran once");
-            snap2 = true;
+            snap2 = playerTurn(p1);
+            if (!snap2) snap2 = playerTurn(p2);
         }
 
     }
 
-    public void playerTurn() {
+    public Boolean playerTurn(Player p) {
+        if (this.validEnter()) deal();
+
+        if (previousCard.symbol == currentCard.symbol) {
+            System.out.println("You gonna SNAP that bro?");
+            //Thread.sleep(2000);
+            return snapCheck();
+            // String userInput = scanner.nextLine().toLowerCase();
+
+        }
+        return false;
+
+        /*
+        if previous card = current:
+        snapCheck or any input really tbhhhh
+        return snap = true
+        current player wins
+else (potentially speaking)
+        player x did not snap, player y, will you?
+        */
+
     }
+
+    public Boolean snapCheck() {
+        return true;
+    }
+
 }
 
 
@@ -69,37 +92,8 @@ public class Snap extends CardGame {
 
 
 
-while !snap
-player 1. turn
-player 2. turn
-
-while run:
-p1 turn check()
-if run still p2 turn check()
-
-playerTurn()
-turn i.e. store previous and deal current
-allow input
-sleep
-if previous card = current:
-    check for snap or any input really tbhhhh
-        return snap = true
-        current player wins
-else (potentially speaking)
-    player x did not snap, player y, will you?
-
-
-
-
 
 twoPlayer{
- while not snap:
-    snap = playerturn (1)
-    if not snap:
-    playerturn (2)
-}
-
-
 
 
  */

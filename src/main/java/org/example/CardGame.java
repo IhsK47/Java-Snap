@@ -33,6 +33,11 @@ public class CardGame {
 
     public static void SortDeckInNumberOrder() {
         deckOfCards.sort(new SortByValue());
+        
+        // or
+        //Collections.sort( deckOfCards, (a, b) -> a.value - b.value);
+
+
     } //exp:aaaa-2222-3333 etc
 
     public static void sortDeckIntoSuits() {
