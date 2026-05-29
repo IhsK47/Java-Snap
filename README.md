@@ -4,38 +4,25 @@
 
 ## Overview
 
-Task is to model a card game using the Java language.
-Challenge broken down into small parts, with the expectation that some of you will keep things simple and master the
-basics, while some of you will push on into the stratosphere!
-
-**Good Luck!**
+This game models a card game using the Java language.
 
 ---
 
-## Stage 1
-
-Using classes, ArrayLists and methods, create a deck of Cards. You should use the following
-classes:
-
-### CardGame
-
-- Contains an ArrayList\<Card\> for the deckOfCards that contains all 52 cards. This is created and populated when the
-  game is constructed.
-- Has a name which is also defined in the constructor.
-- Has a getDeck method that lists out the cards in the deck.
+## Game contains:
 
 ### Card
 
-- Has a String suit. Use the unicode characters of heart, club, diamond and spade.
-- Has a String symbol (2,3,4,5,6,7,8,9,10,J,Q,K,A)
-- Has an int value (2,3,4,5,6,7,8,9,10,11,12,13,14)
-- Has a toString method that describes the class
+- A suit: Utilising the UTF-8 of heart, club, diamond and spade.
+- A symbol (A-K)
+- An int value (1,13)
+
+- info() Method
 
 ---
 
-## Stage 2
+### CardGame contains deckOfCards
 
-Lets get some core functionality to our CardGame by implementing the following methods:
+- Has a displayDeck method that lists out the cards in the deck.
 
 **Card dealCard()**
 
@@ -57,24 +44,28 @@ Shuffles the deck into a random order and stores the new shuffled deck back into
 
 ---
 
-### Stage 3
+### OnePlayer (inside Snap)
 
-Create class for Snap that extends CardGame.
+Design: Snap extends CardGame.
 
-This class should use the methods defined
-above, as well as some new ones, to enable the user to play the game snap according to the
-following rules:
+HOW TO PLAY:
 
-- By pressing enter in the command line, the user takes their turn.
+- Pressing enter in the command line to take a turn.
 - Each turn, a new card is dealt from the deck.
-- The game continues until two cards in a row have the same symbol, at which point the “player” wins and the game ends.
+- The player keeps taking turns until they get same symbol twice in a row, in order to win the game.
 
-### Stage 4
+### twoPlayer
 
-Create a Player class and enable the snap game to be two player, with the users taking it in turns to go. If the snap
-occurs on the users turn, they win.
+Using a player class, two players now take turns to go.
+If the snap occurs on the users turn, they win.
 
 Add a timer so that when there is a snap opportunity, the player has 2 seconds to submit the word “snap” in order to
 win. If they don’t type it in time, they lose.
+
+HOW TO PLAY:
+
+- Each Player takes a turn
+- When its a match, you have 2 seconds to type 'Snap'
+- First to snap wins, good luck!
 
 ---
